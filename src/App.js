@@ -8,12 +8,23 @@ class App extends Component {
       {id:2, content:'Play Mario Kart'}
     ]
   }
+  deleteTodo=(id)=>{
+    const ntodos = this.state.todos.filter(todo=>{
+      if(todo.id===id)
+      return false;
+      else
+      return true;
+    })
+    this.setState({
+      todos:ntodos
+    })
+  }
   render()
     {
       return (
         <div className="todo-app container">
           <h1 className="center blue-text">Todo's</h1>
-          <Todos todos={this.state.todos} />
+          <Todos todos={this.state.todos} deleteTodo={this.deleteTodo} />
         </div>
       );
     }
